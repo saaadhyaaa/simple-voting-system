@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: voting-v1
-          image: sahithi3377/simple-voting-system:v1
+          image: saadhyaprabu/agileassessment:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
@@ -48,7 +48,7 @@ spec:
     spec:
       containers:
         - name: voting-v2
-          image: sahithi3377/simple-voting-system:v2
+          image: saadhyaprabu/agileassessment:v2
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
@@ -82,7 +82,7 @@ spec:
     spec:
       containers:
         - name: voting-v3
-          image: sahithi3377/simple-voting-system:v3
+          image: saadhyaprabu/agileassessment:v3
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
