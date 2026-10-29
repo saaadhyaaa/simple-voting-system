@@ -36,12 +36,16 @@ pipeline {
             }
         }
 
-        stage('Check Kubernetes Connection') {
+        stage('Deploy to Kubernetes') {
             steps {
-                bat 'where kubectl'
-                bat 'kubectl config current-context'
-                bat 'kubectl cluster-info'
-            bat 'kubectl get nodes'
+                withEnv(["KUBECONFIG=${env.USERPROFILE}\\.kube\\config"]) {
+                    bat 'kubectl config current-context'
+                    bat 'kubectl get nodes'
+                    bat 'kubectl apply -f k8s/deployments-services.yaml'
+                    bat 'kubectl rollout status deployment/voting-v1 --timeout=120s'
+                    bat 'kubectl rollout status deployment/voting-v2 --timeout=120s'
+                    bat 'kubectl rollout status deployment/voting-v3 --timeout=120s'
+                }
             }
         }
     }
