@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_REPO = 'sahithi3377/simple-voting-system'
+        DOCKERHUB_REPO = 'saadhyaprabu/agileassessment'
         K8S_MANIFEST = 'k8s/deployments-services.yaml'
     }
 
