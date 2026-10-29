@@ -37,23 +37,20 @@ pipeline {
         }
 
 
-    stage('Deploy to Kubernetes') {
-        steps {
-            withEnv(['KUBECONFIG=C:/Users/Yadam Sahithi Reddy/.kube/config']) {
-                bat 'echo Checking Kubernetes configuration...'
-                bat 'if not exist "%KUBECONFIG%" (echo ERROR: Kubernetes config file not found & exit /b 1)'
-                bat 'kubectl config current-context'
-                bat 'kubectl get nodes'
-                bat 'kubectl apply -f k8s/deployments-services.yaml'
-                bat 'kubectl rollout status deployment/voting-v1 --timeout=120s'
-                bat 'kubectl rollout status deployment/voting-v2 --timeout=120s'
-                bat 'kubectl rollout status deployment/voting-v3 --timeout=120s'
+        stage('Deploy to Kubernetes') {
+            steps {
+                withEnv(['KUBECONFIG=C:/Users/Yadam Sahithi Reddy/.kube/config']) {
+                    bat 'echo Checking Kubernetes configuration...'
+                    bat 'if not exist "%KUBECONFIG%" (echo ERROR: Kubernetes config file not found & exit /b 1)'
+                    bat 'kubectl config current-context'
+                    bat 'kubectl get nodes'
+                    bat 'kubectl apply -f k8s/deployments-services.yaml'
+                    bat 'kubectl rollout status deployment/voting-v1 --timeout=120s'
+                    bat 'kubectl rollout status deployment/voting-v2 --timeout=120s'
+                    bat 'kubectl rollout status deployment/voting-v3 --timeout=120s'
+                }
             }
         }
-    }
-}
-
-
     }
 
     post {
