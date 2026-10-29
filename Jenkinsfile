@@ -36,12 +36,12 @@ pipeline {
             }
         }
 
-        stage('Deploy to Kubernetes') {
+        stage('Check Kubernetes Connection') {
             steps {
-                bat 'kubectl apply -f %K8S_MANIFEST%'
-                bat 'kubectl rollout status deployment/voting-v1 --timeout=120s'
-                bat 'kubectl rollout status deployment/voting-v2 --timeout=120s'
-                bat 'kubectl rollout status deployment/voting-v3 --timeout=120s'
+                bat 'where kubectl'
+                bat 'kubectl config current-context'
+                bat 'kubectl cluster-info'
+            bat 'kubectl get nodes'
             }
         }
     }
