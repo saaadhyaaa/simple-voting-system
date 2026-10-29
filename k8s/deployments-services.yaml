@@ -30,7 +30,7 @@ spec:
   ports:
     - port: 5000
       targetPort: 5000
-      nodePort: 30081
+      nodePort: 30084
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -64,7 +64,7 @@ spec:
   ports:
     - port: 5000
       targetPort: 5000
-      nodePort: 30082
+      nodePort: 30085
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -98,4 +98,4 @@ spec:
   ports:
     - port: 5000
       targetPort: 5000
-      nodePort: 30083
+      nodePort: 30086
